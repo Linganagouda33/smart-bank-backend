@@ -12,7 +12,7 @@ import lombok.Data;
 public class Role {
     @Id
     @GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
-    // private int id;
-    // private String role_name ;
+    private Long id;
+    private String roleName;
 
 }
