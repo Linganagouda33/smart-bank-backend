@@ -1,9 +1,14 @@
 package com.smartbank.smart_bank_backend.service.impl;
 
+import java.time.LocalDateTime;
+
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.smartbank.smart_bank_backend.dto.request.RegisterRequest;
+import com.smartbank.smart_bank_backend.dto.responce.ApiResponse;
 import com.smartbank.smart_bank_backend.entity.Role;
+import com.smartbank.smart_bank_backend.entity.User;
 import com.smartbank.smart_bank_backend.repository.RoleRepository;
 import com.smartbank.smart_bank_backend.repository.UserRepository;
 import com.smartbank.smart_bank_backend.service.AuthService;
@@ -16,7 +21,7 @@ public class AuthServiceImpl  implements AuthService {
     private final PasswordEncoder passwordEncoder;
 
     public AuthServiceImpl(UserRepository userRepository,
-                           RoleRepository roleRepository,
+                           RoleRepository roleRepository, 
                            PasswordEncoder passwordEncoder) {
 
         this.userRepository = userRepository;
