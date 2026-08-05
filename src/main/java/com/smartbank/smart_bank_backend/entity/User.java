@@ -40,26 +40,4 @@ public class User {
     @JoinColumn(name = "role_id")
     private Role role;
 
-    // public User() {
-    // }
-
-    // public User(Long id,
-    //             String fullName,
-    //             String email,
-    //             String phone,
-    //             String password,
-    //             String status,
-    //             LocalDateTime createdAt,
-    //             Role role) {
-
-    //     this.id = id;
-    //     this.fullName = fullName;
-    //     this.email = email;
-    //     this.phone = phone;
-    //     this.password = password;
-    //     this.status = status;
-    //     this.createdAt = createdAt;
-    //     this.role = role;
-    // }
-
 }

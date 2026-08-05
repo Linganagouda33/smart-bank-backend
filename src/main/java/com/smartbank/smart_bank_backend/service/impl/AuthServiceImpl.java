@@ -1,14 +1,16 @@
-package com.smartbank.smart_bank_backend.service.impl;
 
+package com.smartbank.smart_bank_backend.service.impl;
 import java.time.LocalDateTime;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.smartbank.smart_bank_backend.dto.request.RegisterRequest;
-import com.smartbank.smart_bank_backend.dto.responce.ApiResponse;
+import com.smartbank.smart_bank_backend.dto.response.ApiResponse;
 import com.smartbank.smart_bank_backend.entity.Role;
 import com.smartbank.smart_bank_backend.entity.User;
+import com.smartbank.smart_bank_backend.exception.EmailAlreadyExistsException;
+import com.smartbank.smart_bank_backend.exception.PhoneAlreadyExistsException;
 import com.smartbank.smart_bank_backend.repository.RoleRepository;
 import com.smartbank.smart_bank_backend.repository.UserRepository;
 import com.smartbank.smart_bank_backend.service.AuthService;
@@ -33,18 +35,18 @@ public ApiResponse register(RegisterRequest request) {
 
     if(userRepository.existsByEmail(request.getEmail())){
 
-        throw new RuntimeException("Email already exists");
+        throw new EmailAlreadyExistsException("Email already exists.");
     }
 
     if(userRepository.existsByPhone(request.getPhone())){
 
-        throw new RuntimeException("Phone number already exists");
+        throw new PhoneAlreadyExistsException("Phone number already exists.");
     }
 
     Role role = roleRepository
             .findByRoleName("CUSTOMER")
             .orElseThrow(() ->
-                    new RuntimeException("Role not found"));
+                    new RoleNotFoundException("Default CUSTOMER role not found."));
 
     User user = new User();
 

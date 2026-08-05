@@ -1,4 +1,4 @@
-package com.smartbank.smart_bank_backend.dto.responce;
+package com.smartbank.smart_bank_backend.dto.response;
 
 public class ApiResponse {
 

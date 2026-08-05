@@ -1,5 +1,9 @@
 package com.smartbank.smart_bank_backend.exception;
 
-public class InvalidCredentialsException {
+public class InvalidCredentialsException extends RuntimeException {
+
+    public InvalidCredentialsException(String message) {
+        super(message);
+    }
 
 }
